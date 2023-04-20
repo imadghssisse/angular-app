@@ -1,0 +1,9 @@
+<div *ngFor="let user of users" class="col-md-2 my-3">
+    <div class="card">
+        <img src="{{ user.avatar_url }}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ user.login }}</h5>
+            <a routerLink="/profile/{{user.login}}" class="btn btn-primary">Go user</a>
+        </div>
+    </div>
+</div>

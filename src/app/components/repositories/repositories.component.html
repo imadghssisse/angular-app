@@ -1,0 +1,42 @@
+<div class="container">
+    <button type="button" class="btn btn-secondary my-4" (click)="getRepositories()">Refresh repositories List</button>
+    <div class="row">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">name</th>
+                    <th scope="col">description</th>
+                    <th scope="col">number of stars</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr  role="button" *ngFor="let repository of repositories" (click)="getStatistics(repository)">
+                    <th scope="row">{{ repository.id }}</th>
+                    <td>{{ repository.name }}</td>
+                    <td>{{ repository.description }}</td>
+                    <td>{{ repository.stargazers_count }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="row" *ngIf="(commits | json) != '{}'">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Week</th>
+                    <th scope="col">All</th>
+                    <th scope="col">Owner</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr role="button" *ngFor="let all of commits.all; let owner of commits.owner;let week = index">
+                    <th scope="row">{{ week + 1 }}</th>
+                    <td>{{ all }}</td>
+                    <td>{{ owner }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
