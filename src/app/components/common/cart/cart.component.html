@@ -1,4 +1,4 @@
-<div *ngFor="let user of users" class="col-md-2 my-3">
+<div *ngFor="let user of users | async" class="col-md-2 my-3">
     <div class="card">
         <img src="{{ user.avatar_url }}" class="card-img-top" alt="...">
         <div class="card-body">

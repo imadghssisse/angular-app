@@ -11,6 +11,8 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { RepositoriesComponent } from './components/repositories/repositories.component';
 import { FollowersComponent } from './components/followers/followers.component';
 import { CartComponent } from './components/common/cart/cart.component';
+import { StoreModule } from '@ngrx/store';
+import modules from './store/app.store';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import { CartComponent } from './components/common/cart/cart.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    StoreModule.forRoot({...modules}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]

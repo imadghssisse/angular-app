@@ -6,6 +6,7 @@ import { RepositoriesComponent } from './components/repositories/repositories.co
 
 const routes: Routes = [
   { path: '', component: UsersComponent, pathMatch: 'full' },
+  { path: 'users/:username', component: UsersComponent, pathMatch: 'full' },
   { path: 'profile/:username', component: ProfileComponent },
   { path: 'repositories/:username', component: RepositoriesComponent }
 

@@ -1,8 +1,10 @@
 // This components to manage followrs of user in Github
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { Follower } from 'src/app/models/follower.model';
 import { FollowersService } from 'src/app/services/followers.service';
+import { setUsers } from 'src/app/store/modules/user.actions';
 
 @Component({
   selector: 'app-followers',
@@ -11,9 +13,8 @@ import { FollowersService } from 'src/app/services/followers.service';
 })
 export class FollowersComponent implements OnInit {
 
-  followers: Follower[] = [];
-
   constructor(
+    private store: Store,
     private route: ActivatedRoute,
     private followerService: FollowersService
   ) {}
@@ -31,8 +32,8 @@ export class FollowersComponent implements OnInit {
       next: params => {
         const username = params.get('name');
         if(username) {
-          this.followerService.findAll(username).subscribe(response => {
-            this.followers = response; 
+          this.followerService.findAll(username).subscribe(data => {
+            this.store.dispatch(setUsers({ data }))
           })
         } 
       }

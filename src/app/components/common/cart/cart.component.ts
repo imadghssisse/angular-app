@@ -1,6 +1,7 @@
 // This components to show cart user in github
 import { Component, Input } from '@angular/core';
-import { User } from 'src/app/models/user.model';
+import { Store } from '@ngrx/store';
+import { selectUsers } from 'src/app/store/modules/user.selectore';
 
 @Component({
   selector: 'app-cart',
@@ -8,8 +9,10 @@ import { User } from 'src/app/models/user.model';
   styleUrls: ['./cart.component.scss']
 })
 export class CartComponent {
-  /*
-  * users is props array  
-  */
-  @Input() users: User[] = [];
+  
+  constructor(
+    private store: Store
+  ) {}
+  users = this.store.select(selectUsers);
+
 }

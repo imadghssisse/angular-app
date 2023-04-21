@@ -3,5 +3,5 @@ import { User } from "./user.model";
 
 export interface Search {
     total_count: number,
-    user: User[]
+    items: User[]
 }
